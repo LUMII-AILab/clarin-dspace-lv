@@ -346,11 +346,14 @@
 						<span style="margin-left: 5px; margin-right: 5px;">
 							<xsl:text> | </xsl:text>
 						</span>
+						<xsl:variable name="dspaceLogout" select="/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='logoutURL']" />
 						<a style="color: #FFF;">
 							<xsl:attribute name="href">
-                                                        <xsl:value-of
-								select="/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='logoutURL']" />
-                                                </xsl:attribute>
+								<xsl:value-of select="concat('/Shibboleth.sso/Logout?return=', $dspaceLogout)"/>
+							</xsl:attribute>
+							<!-- <xsl:attribute name="href">
+								<xsl:value-of select="/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='logoutURL']" />
+							</xsl:attribute> -->
 							<i class="fa fa-sign-out fa-lg">&#160;</i>
 							<i18n:text>xmlui.dri2xhtml.structural.logout</i18n:text>
 						</a>
